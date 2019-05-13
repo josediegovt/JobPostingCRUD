@@ -8,7 +8,7 @@ class DeleteView extends React.Component{
     render(){
         return(
             <div className = "delview">
-                <DeleteComponent/>
+                <DeleteComponent thedel = {this.props.todelete}/>
             </div> 
         )
     }

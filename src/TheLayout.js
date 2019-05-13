@@ -15,7 +15,6 @@ class TheLayout extends React.Component{
             // This is an  array [{ : }.{ : },{ : }];
             currentdisplay : this.data,
             currentkey : 0 ,
-            currenttext : "IndexView"
         };
     }
     whenClicked(Index){
@@ -27,9 +26,6 @@ class TheLayout extends React.Component{
     }
     toUpdate(idnumber, fieldtochange, newvalue){
         for(var obj of this.data){
-            console.log(obj["_id"]);
-            console.log(obj["title"])
-            console.log(idnumber)
             if(obj["_id"] === idnumber){
                 obj[fieldtochange] = newvalue;
             }
@@ -37,8 +33,17 @@ class TheLayout extends React.Component{
                 continue;
             }
         }
+        this.setState({currentdisplay : this.data})
+    }
+    toDelete(idNum){
         console.log(this.data)
-        this.setState({ currentdisplay : this.data});
+        for(var x in this.data){
+            if(this.data[x]["_id"] == idNum){
+                this.data.splice(x,1);
+            }
+        }
+        this.setState({currentdisplay : this.data});
+        console.log(this.data)
     }
     render(){
         return(
@@ -48,7 +53,7 @@ class TheLayout extends React.Component{
                 <ReadView displayed = {this.state.currentdisplay} index = {this.state.currentkey}/>
                 <CreateView tocreate = {this.toCreate.bind(this)} />
                 <UpdateView toupdate = {this.toUpdate.bind(this)} />
-                <DeleteView />
+                <DeleteView todelete = {this.toDelete.bind(this)} />
             </div>
         )
     }
