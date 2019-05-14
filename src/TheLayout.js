@@ -4,8 +4,12 @@ import CreateView from './CreateView'
 import ReadView from './ReadView'
 import UpdateView from './UpdateView'
 import DeleteView from './DeleteView'
+import createHistory from 'history/createBrowserHistory'
 import NavBar from './NavBar'
 import Data from './Data'
+import {Router, Route} from 'react-router-dom'
+
+export const history = createHistory();
 
 class TheLayout extends React.Component{
     constructor(props){
@@ -14,7 +18,7 @@ class TheLayout extends React.Component{
         this.state = {
             // This is an  array [{ : }.{ : },{ : }];
             currentdisplay : this.data,
-            currentkey : 0 ,
+            currentkey : 0 
         };
     }
     whenClicked(Index){
@@ -25,15 +29,17 @@ class TheLayout extends React.Component{
         this.setState({ currentdisplay : this.data});
     }
     toUpdate(idnumber, fieldtochange, newvalue){
-        for(var obj of this.data){
-            if(obj["_id"] === idnumber){
-                obj[fieldtochange] = newvalue;
+        var newkey;
+        for(var obj in this.data){
+            if(this.data[obj]["_id"] === idnumber){
+                this.data[obj][fieldtochange] = newvalue;
+                newkey = obj
             }
             else{
                 continue;
             }
         }
-        this.setState({currentdisplay : this.data})
+        this.setState({currentdisplay : this.data, currentkey : newkey})
     }
     toDelete(idNum){
         console.log(this.data)
@@ -48,12 +54,15 @@ class TheLayout extends React.Component{
     render(){
         return(
             <div> 
-                <NavBar />
-                <IndexView whenclick = {this.whenClicked.bind(this)} jobinfo = {this.state.currentdisplay}/>
-                <ReadView displayed = {this.state.currentdisplay} index = {this.state.currentkey}/>
-                <CreateView tocreate = {this.toCreate.bind(this)} />
-                <UpdateView toupdate = {this.toUpdate.bind(this)} />
-                <DeleteView todelete = {this.toDelete.bind(this)} />
+                <Router history = {history}>
+                    <NavBar />
+                    <Route path="/" exact render={(props) => (<IndexView whenclick = {this.whenClicked.bind(this)} index = {this.state.currentdisplay} {...props}/>)} />
+                    <Route path="/index" exact render={(props) => (<IndexView whenclick = {this.whenClicked.bind(this)} index = {this.state.currentdisplay} {...props}/>)} />
+                    <Route path="/read" render={(props) => (<ReadView displayed = {this.state.currentdisplay} index = {this.state.currentkey} {...props}/>)} />
+                    <Route path="/create" render={(props) => (<CreateView tocreate = {this.toCreate.bind(this)} {...props}/>)} />
+                    <Route path="/update" render={(props) => (<UpdateView toupdate = {this.toUpdate.bind(this)} {...props}/>)} />
+                    <Route path="/delete" render={(props) => (<DeleteView todelete = {this.toDelete.bind(this)} index = {3} {...props}/>)} />
+                </Router>
             </div>
         )
     }

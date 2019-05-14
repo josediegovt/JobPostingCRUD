@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 
 class NavBar extends React.Component{
     constructor(props){
@@ -8,11 +9,11 @@ class NavBar extends React.Component{
         return(
             <div className = "navclass">
                 <ul>
-                    <li> Postings </li>
-                    <li> Create </li>
-                    <li> View </li>
-                    <li> Update </li>
-                    <li> Delete </li>
+                    <li> <Link className = "linkcolor" to = "/index"> Postings </Link> </li>
+                    <li> <Link className = "linkcolor" to = "/create"> Create </Link> </li>
+                    <li> <Link className = "linkcolor" to = "/read"> View </Link> </li>
+                    <li> <Link className = "linkcolor" to = "/update"> Update </Link> </li>
+                    <li> <Link className = "linkcolor" to = "/delete"> Delete </Link> </li>
                 </ul>
             </div>
         )

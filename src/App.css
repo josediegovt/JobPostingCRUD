@@ -29,7 +29,7 @@
 
 .jobsbox table{
   border-collapse: separate;
-  border-spacing: 70px 22px;
+  border-spacing: 40px 12px;
 
 }
 
@@ -84,10 +84,22 @@
   overflow: scroll;
 }
 
+.linkcolor{
+  color: white;
+}
+
+a:hover{
+  color: white;
+  text-decoration: underline;
+}
+
 .createview{
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background-color: rgb(64, 99, 150);
   width: 99%;
-  height: 50%;
+  height: 721px;
   color: white;
   margin: 6px;
 }
@@ -99,15 +111,17 @@
 }
 
 .readview{
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background-color: rgb(64, 99, 150);
   width: 99%;
-  height: 50%;
+  height: 721px;
   color: white;
   margin: 6px;
 }
 
 .readcomp{
-  padding-top: 20px;
   display: inline-block;
   margin: auto;
   width: 70%;
@@ -118,9 +132,13 @@
 }
 
 .updateview{
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background-color: rgb(64, 99, 150);
   width: 99%;
-  height: 100%;
+  text-align: center;
+  height: 721px;
   color: white;
   margin: 6px;
 }
@@ -128,33 +146,26 @@
 .idnumber{
   margin: 30px;
   margin-top: 0px;
-  padding-top: 20px;
 }
 
 .delview{
   background-color: rgb(64, 99, 150);
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 99%;
-  height: 50%;
+  height: 721px;
   color: white;
   margin: 6px;
 }
 
 .todelin{
-  width: 40%;
-}
-
-.updateclass{
-  display: flex;
-  width: 90%;
-  margin: auto;
-  margin-top: 50px;
-  margin-bottom: 30px;
-  justify-content: center;
+  width: 100%;
 }
 
 .updateclass input{
   margin: 20px;
-  margin-top: px;
+  margin-top: 0px;
   margin-bottom: 0px;
 }
 
@@ -177,6 +188,7 @@ h1{
   display: flex;
   width: 100%;
   margin: auto;
+  justify-content: center;
 }
 
 .RCr2 div{

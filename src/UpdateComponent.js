@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 
 class UpdateComponent extends React.Component{
     constructor(props){
@@ -22,7 +23,7 @@ class UpdateComponent extends React.Component{
     // Two way binding needed for lower inputs
     render(){
         return(
-            <div>
+            <div className = "completeupform">
                 <form>
                     <div className = "idnumber">
                         <br />
@@ -42,7 +43,7 @@ class UpdateComponent extends React.Component{
                         <input type = "text" id = "thechange" placeholder = "New Value"/>
                         <br />
                     </div>
-                    <input type = "button" className = "createbutton" onClick = {this.handleUpdate.bind(this)} value = "Update"/>
+                    <Link to = "/read"> <input type = "button" className = "createbutton" onClick = {this.handleUpdate.bind(this)} value = "Update"/> </Link>
                 </form>
             </div>
         )
