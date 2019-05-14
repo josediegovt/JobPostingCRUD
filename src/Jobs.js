@@ -10,7 +10,7 @@ class Jobs extends React.Component{
     }
     onTheClick(key, event, props){
         this.setState({currentelement : key});
-        this.props.whenc(key); // eslint-disable-next-lin
+        this.props.whenc(key);
     }
     render(){
         return(

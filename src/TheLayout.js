@@ -16,7 +16,6 @@ class TheLayout extends React.Component{
         super(props);
         this.data = Data;
         this.state = {
-            // This is an  array [{ : }.{ : },{ : }];
             currentdisplay : this.data,
             currentkey : 0 
         };
@@ -30,26 +29,28 @@ class TheLayout extends React.Component{
     }
     toUpdate(idnumber, fieldtochange, newvalue){
         var newkey;
-        for(var obj in this.data){
-            if(this.data[obj]["_id"] === idnumber){
-                this.data[obj][fieldtochange] = newvalue;
-                newkey = obj
+        for(var x in this.data){
+            if(this.data[x]["_id"] === idnumber){
+                this.data[x][fieldtochange] = newvalue;
+                newkey = x;
             }
             else{
                 continue;
             }
         }
-        this.setState({currentdisplay : this.data, currentkey : newkey})
+        console.log(this.data)
+        console.log(newkey)
+        if(idnumber != ""){
+            this.setState({currentdisplay : Data, currentkey : newkey})
+        }
     }
     toDelete(idNum){
-        console.log(this.data)
         for(var x in this.data){
             if(this.data[x]["_id"] == idNum){
                 this.data.splice(x,1);
             }
         }
         this.setState({currentdisplay : this.data});
-        console.log(this.data)
     }
     render(){
         return(
@@ -61,7 +62,7 @@ class TheLayout extends React.Component{
                     <Route path="/read" render={(props) => (<ReadView displayed = {this.state.currentdisplay} index = {this.state.currentkey} {...props}/>)} />
                     <Route path="/create" render={(props) => (<CreateView tocreate = {this.toCreate.bind(this)} {...props}/>)} />
                     <Route path="/update" render={(props) => (<UpdateView toupdate = {this.toUpdate.bind(this)} {...props}/>)} />
-                    <Route path="/delete" render={(props) => (<DeleteView todelete = {this.toDelete.bind(this)} index = {3} {...props}/>)} />
+                    <Route path="/delete" render={(props) => (<DeleteView todelete = {this.toDelete.bind(this)} />)} />
                 </Router>
             </div>
         )

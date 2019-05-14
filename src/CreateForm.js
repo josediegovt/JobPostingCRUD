@@ -27,18 +27,14 @@ class CreateForm extends React.Component{
         var emp = event.target[3].value;
         var req = event.target[4].value;
         var tasks = event.target[5].value;
-        req = req.split(",");
-        tasks = tasks.split(",");
-        // check for idnum later
+        req = req.split("\n");
+        tasks = tasks.split("\n");
         var creation = {"_id" : idnum, "title" : title , "city" : city, "employer" : emp, "requirements" : req, "tasks" : tasks};
-        // can create once
         this.clearFields(event);
         alert("Job posting with id of " + idnum );
         this.props.toup(creation);
     }
     handleTheChange(event){
-        // check this
-        // make text dissapear after this
         const { target: { id, value } } = event
         this.setState({ [id]: value })
     }
