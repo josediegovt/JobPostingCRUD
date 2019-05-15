@@ -41,7 +41,7 @@ class CreateForm extends React.Component{
 
     render(){
         return(
-            <div className = "createform text-light">
+            <div className = "createform">
                 <form onSubmit = {this.onsub.bind(this)}>
                     <div className = "CFr1">
                         <br/>

@@ -3,7 +3,7 @@ import ReadComponent from './ReadComponent';
 
 const ReadView = (props) => {
     return(
-        <div className = "readview text-light">
+        <div className = "readview">
             <ReadComponent idnum = {props.displayed[props.index]["_id"]} 
                         title = {props.displayed[props.index]["title"]} 
                         city = {props.displayed[props.index]["city"]} 

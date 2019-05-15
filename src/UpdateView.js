@@ -3,7 +3,7 @@ import UpdateComponent from './UpdateComponent';
 
 const UpdateView = (props) => {
     return(
-        <div className = "updateview text-light">
+        <div className = "updateview">
             <UpdateComponent tocr = {props.toupdate}/>
         </div>
     )

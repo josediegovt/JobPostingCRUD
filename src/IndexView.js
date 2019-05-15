@@ -7,7 +7,7 @@ class IndexView extends React.Component{
     }
     render(){
         return(
-            <div className = "indexview text-light">
+            <div className = "indexview">
                 <JobsBundle wc = {this.props.whenclick} theInfo = {this.props.index}/>
             </div>
         )

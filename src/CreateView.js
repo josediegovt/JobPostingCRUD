@@ -8,7 +8,7 @@ class CreateView extends React.Component{
 
     render(){
         return(
-            <div className = "createview text-light">
+            <div className = "createview">
                 <CreateForm toup = {this.props.tocreate} />
             </div>
         )
